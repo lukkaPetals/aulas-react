@@ -3,11 +3,40 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Home from './pages/Home'
+import Contato from './pages/Contato'
+import ErrorPage from './pages/ErrorPage';
+import ContatoDetalhes from './pages/ContatoDetalhes';
 
+
+const router = createBrowserRouter([
+  {
+      path: "/",
+      element: <App/>,
+      errorElement: <ErrorPage/>,
+      children: [
+          {
+              path: "home",
+              element: <Home/>
+          },
+          {
+            path: "contato",
+            element: <Contato/>
+          },
+          //nested routes identificador unico
+          {
+            path: "/contato/:id",
+            element: <ContatoDetalhes/>
+          }
+      ]
+  }
+  
+])
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
