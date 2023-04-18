@@ -1,6 +1,7 @@
 import './App.css';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar'
 import { Outlet } from "react-router-dom"
+import SayMyName from "./components/SayMyName"
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <h1>React Router</h1>
       <Outlet/>
       <p>footer</p>
+      <SayMyName name='Lucas'/>
     </div>
   )
 }
